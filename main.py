@@ -1,13 +1,14 @@
 # coding:utf-8
 from flask import Flask
 from config import DevConfig
-from flask_restful import  Api
-from apis import HelloWorld
 
 app = Flask(__name__)
 
 
+
 app.config.from_object(DevConfig)
+
+
 
 @app.route('/')
 def home():
@@ -15,8 +16,6 @@ def home():
 
 
 
-api = Api(app)
-api.add_resource(HelloWorld,'/h')
 
 if __name__ == '__main__':
     app.run()
