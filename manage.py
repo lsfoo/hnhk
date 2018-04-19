@@ -21,7 +21,7 @@ def make_shell_context():
                 db=models.db,
                 User=models.User)
 
-manager.add_command("runserver", Server(host='0.0.0.0',port=80))
+manager.add_command("runserver", Server(host='0.0.0.0',port=5000))
 
 
 api = Api(app)
