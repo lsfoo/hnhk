@@ -1,8 +1,12 @@
 # coding:utf-8
-from flask import Flask
+import sys
+reload(sys)
+sys.setdefaultencoding("utf-8")
+
+from flask import Flask,render_template
 from config import DevConfig
 
-app = Flask(__name__)
+app = Flask(__name__,static_url_path='')
 
 
 
@@ -12,7 +16,7 @@ app.config.from_object(DevConfig)
 
 @app.route('/')
 def home():
-    return '<h1>Hello World!</h1>'
+    return render_template('home.html',title='首页')
 
 
 

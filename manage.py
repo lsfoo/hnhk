@@ -17,8 +17,8 @@ def make_shell_context():
     return: Default import object
     type: `Dict`
     """
-    return dict(app=main.app,
-                db=models.db,
+    return dict(App=app,
+                Db=models.db,
                 User=models.User)
 
 manager.add_command("runserver", Server(host='0.0.0.0',port=5000))
