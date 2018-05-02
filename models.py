@@ -19,11 +19,13 @@ class User(db.Model):
         return '<User %r>' % self.username
 class Page(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(80), unique=True, nullable=False)
+    title = db.Column(db.String(255), unique=True, nullable=False)
     sort = db.Column(db.Integer, unique=True, nullable=False)
+    content = db.Column(db.Text())
     def __init__(self,id,name,sort):
         self.id = id
-        self.name = name
+        self.title = title 
         self.sort = sort
+        self.content = content 
     def __repr__(self):
         return '<Page %r>' % self.name

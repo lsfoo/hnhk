@@ -1,15 +1,15 @@
 # coding utf-8
 from flask_script import Manager, Server
 from flask_admin import Admin
-from main import app
+import main 
 import models
 
 from flask_restful import  Api
 from apis import HelloWorld
 
-manager = Manager(app)
+manager = Manager(main.app)
 
-admin = Admin(app,name='admin',template_mode='bootstrap3')
+admin = Admin(main.app,name='admin',template_mode='bootstrap3')
 @manager.shell
 def make_shell_context():
     """Create a python CLI.
@@ -17,14 +17,14 @@ def make_shell_context():
     return: Default import object
     type: `Dict`
     """
-    return dict(App=app,
-                Db=models.db,
-                User=models.User)
+    return dict(app=main.app,
+                db=models.db,
+                user=models.User)
 
 manager.add_command("runserver", Server(host='0.0.0.0',port=5000))
 
 
-api = Api(app)
+api = Api(main.app)
 api.add_resource(HelloWorld,'/h')
 
 if __name__ == "__main__":
