@@ -1,6 +1,7 @@
 # coding utf-8
 from flask_script import Manager, Server
 from flask_admin import Admin
+from flask_migrate import Migrate,MigrateCommand
 import main 
 import models
 
@@ -19,9 +20,12 @@ def make_shell_context():
     """
     return dict(app=main.app,
                 db=models.db,
-                user=models.User)
+                Tag=models.Tag,
+                Post=models.Post,
+                Comment=models.Comment,
+                User=models.User)
 
-manager.add_command("runserver", Server(host='0.0.0.0',port=5000))
+manager.add_command("runserver", Server())
 
 
 api = Api(main.app)
