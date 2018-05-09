@@ -201,42 +201,18 @@ $(function(){
 			</div>
 			<div class="sy-newsbox row">
 				<ul class="clearfix">
+
+					{%for post in posts.items%}
 					<li class="col-md-6 col-lg-6 col-sm-12">
 						<div class="sy-n-img">
-							<a href="#"><img src="img/header/n-img.jpg"/></a>
+							<a href="#"><img src="{{post.picture}}"/></a>
 						</div>
 						<div class="sy-n-txt">
-							<h2><a href="#">焊光中的服务魅力—记售后服务工程师张德库</a></h2>
-							<p>近日，客车在“领跑者SY6123豪华卧铺车”上率先采用CAN总线控制系统技术，成为中国客车行业使用CAN总线控制的先驱。</p>
+							<h2><a href="#">{{post.title}}</a></h2>
+							<p>{{post.text}}</p>
 						</div>      				
 					</li>
-					<li class="col-md-6 col-lg-6 col-sm-12">
-						<div class="sy-n-img">
-							<a href="#"><img src="img/header/n-img.jpg"/></a>
-						</div>
-						<div class="sy-n-txt">
-							<h2><a href="#">焊光中的服务魅力—记售后服务工程师张德库</a></h2>
-							<p>近日，客车在“领跑者SY6123豪华卧铺车”上率先采用CAN总线控制系统技术，成为中国客车行业使用CAN总线控制的先驱。</p>
-						</div>      				
-					</li>
-					<li class="col-md-6 col-lg-6 col-sm-12">
-						<div class="sy-n-img">
-							<a href="#"><img src="img/header/n-img.jpg"/></a>
-						</div>
-						<div class="sy-n-txt">
-							<h2><a href="#">焊光中的服务魅力—记售后服务工程师张德库</a></h2>
-							<p>近日，客车在“领跑者SY6123豪华卧铺车”上率先采用CAN总线控制系统技术，成为中国客车行业使用CAN总线控制的先驱。</p>
-						</div>      				
-					</li>
-					<li class="col-md-6 col-lg-6 col-sm-12">
-						<div class="sy-n-img">
-							<a href="#"><img src="img/header/n-img.jpg"/></a>
-						</div>
-						<div class="sy-n-txt">
-							<h2><a href="#">焊光中的服务魅力—记售后服务工程师张德库</a></h2>
-							<p>近日，客车在“领跑者SY6123豪华卧铺车”上率先采用CAN总线控制系统技术，成为中国客车行业使用CAN总线控制的先驱。</p>
-						</div>      				
-					</li>
+					{%endfor%}
 				</ul>
 			</div>
 
@@ -244,11 +220,6 @@ $(function(){
 
 		<!--新闻咨询 结束-->
 
-		<!--
-	  作者：416153666@qq.com
-	  时间：2015-12-15
-	  描述：首页布局区域结束
-		--> 
 
 		<!--网页底部-->
 		<footer id="footer">

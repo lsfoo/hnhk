@@ -9,6 +9,10 @@ from flask_restful import  Api
 from apis import HelloWorld
 
 manager = Manager(main.app)
+migrate = Migrate(main.app,models.db)
+
+manager.add_command("server",Server())
+manager.add_command("db",MigrateCommand)
 
 admin = Admin(main.app,name='admin',template_mode='bootstrap3')
 @manager.shell

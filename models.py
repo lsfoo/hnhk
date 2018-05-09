@@ -14,6 +14,7 @@ class Post(db.Model):
     __tablename__ = 'posts'
     id = db.Column(db.String(45), primary_key=True)
     title = db.Column(db.String(255))
+    picture = db.Column(db.String(255))
     text = db.Column(db.Text())
     publish_date = db.Column(db.DateTime)
     # Set the foreign key for Post
