@@ -27,10 +27,8 @@ def make_shell_context():
                 Tag=models.Tag,
                 Post=models.Post,
                 Comment=models.Comment,
+                Attachment=models.Attachment,
                 User=models.User)
-
-manager.add_command("runserver", Server())
-
 
 api = Api(main.app)
 api.add_resource(HelloWorld,'/h')

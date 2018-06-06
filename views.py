@@ -10,7 +10,7 @@ def sidebar_data():
 
     # Get post of recent
     recent = db.session.query(Post).order_by(
-            Post.publish_date.desc()
+            Post.create_date.desc()
         ).limit(5).all()
 
     # Get the tags and sort by count of posts.
@@ -21,21 +21,26 @@ def sidebar_data():
         ).group_by(Tag).order_by('total DESC').limit(5).all()
     return recent, top_tags
 
+def navigation_data():
+    navigation = db.session.query(Page).order_by(
+            Page.short.desc()).all()
+    return navigation
+    
+
 @app.route('/')
 @app.route('/<int:page>')
 def home(page=1):
     """View function for home page"""
 
     posts = Post.query.order_by(
-        Post.publish_date.desc()
+        Post.create_date.desc()
     ).paginate(page, 10)
 
-    recent, top_tags = sidebar_data()
+
 
     return render_template('home.html',
-                           posts=posts,
-                           recent=recent,
-                           top_tags=top_tags)
+                           posts=posts
+                           )
 
 
 @app.route('/post/<string:post_id>')
@@ -60,7 +65,7 @@ def tag(tag_name):
     """View function for tag page"""
 
     tag = db.session.query(Tag).filter_by(name=tag_name).first_or_404()
-    posts = tag.posts.order_by(Post.publish_date.desc()).all()
+    posts = tag.posts.order_by(Post.create_date.desc()).all()
     recent, top_tags = sidebar_data()
 
     return render_template('tag.html',
